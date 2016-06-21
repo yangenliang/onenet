@@ -73,5 +73,5 @@ all: $(TARGET)
 clean:
 	@rm -rf $(BUILD_DIR)
 
-.PHONY: all clean
+.PHONY: all clean $(TARGET)
 	
