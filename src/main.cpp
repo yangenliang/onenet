@@ -6,9 +6,13 @@
 ***************************************************/
 
 #include <iostream>
+#include "game.h"
 
 int main(void)
 {
 	std::cout << "onenet stared" << std::endl; 
+	Game game; 
+	game.start(); 
+	game.end(); 
 	return 0; 
 }

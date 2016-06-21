@@ -16,6 +16,6 @@ public:
 
 private:
 	void main_loop(); 
-}
+}; 
 
 #endif // _GAME_H_
