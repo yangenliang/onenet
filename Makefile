@@ -44,6 +44,9 @@ TARGET		= $(BIN_DIR)/game
 
 # --------------------------------------------------
 
+# targets
+all: $(TARGET)
+
 # build target
 $(TARGET): $(OBJ_CPP) $(OBJ_C)
 	@echo ' '
@@ -64,14 +67,13 @@ $(OBJ_C): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(DIR_GUARD)
 	@$(CC) $(INC_PATH) $(CFLAGS) -c -MMD -MP -MF"$(@:%.o=%.d)" -o "$@" "$<"
 
-# --------------------------------------------------
+# dependencies
+-include $(GAME_DEP)
 
-# targets
-all: $(TARGET)
+# --------------------------------------------------
 
 # clean
 clean:
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(BUILD_DIR) $(BIN_DIR)
 
-.PHONY: all clean $(TARGET)
-	
+.PHONY: all clean
