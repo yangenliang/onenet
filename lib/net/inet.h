@@ -8,13 +8,15 @@
 #ifndef _INET_H_
 #define _INET_H_
 
+#include "../imodule.h" 
+
 typedef unsigned int NetId; 
 typedef unsigned int Ip; 
 typedef unsigned int Port; 
 
 class INetCallback; 
 
-class INet
+class INet : public IModule
 {
 public:
 	virtual ~INet() = 0; 

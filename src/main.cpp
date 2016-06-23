@@ -6,13 +6,12 @@
 ***************************************************/
 
 #include <iostream>
-#include "game.h"
+#include "../lib/game.h"
 
 int main(void)
 {
 	std::cout << "onenet stared" << std::endl; 
 	Game game; 
-	game.start(); 
-	game.end(); 
+	// game.register_module(); 
 	return 0; 
 }
