@@ -25,6 +25,7 @@ SUB_BUILDS  = $(wildcard $(MK_DIR)/*-build.mk)
 TARGETS     =
 
 SRC_DIR     = src
+LIB_DIR		= lib
 BUILD_DIR   = build
 BIN_DIR     = bin
 
@@ -42,5 +43,7 @@ include $(SUB_BUILDS)
 # clean
 clean:
 	@rm -rf $(BUILD_DIR)
+cleanall:
+	@rm -rf $(BUILD_DIR) $(BIN_DIR)
 
-.PHONY: clean $(TARGETS)
+.PHONY: clean cleanall $(TARGETS)
