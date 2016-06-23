@@ -41,6 +41,7 @@ public:
 	virtual void on_received(NetId netid, const char* data, int length) = 0; 
 	virtual void on_disconnected(NetId netid) = 0; 
 	virtual void on_connected() = 0; 
+	
 }; 
 
 #endif // _INET_H_

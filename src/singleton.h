@@ -12,10 +12,9 @@ template<class T>
 class Singleton
 {
 protected:
-	Singleton(){
-	}
-	~Singleton(){
-	}
+	Singleton(){}
+	~Singleton(){}
+	
 private:
 	Singleton(const Singleton&);
 	const Singleton& operator=(const Singleton&);
