@@ -3,7 +3,7 @@
 -include $(GAME_DEP)
 
 # build target
-$(GAME_TARGET): $(GAME_OBJ_CPP) $(GAME_OBJ_C)
+$(GAME_TARGET): $(GAME_OBJ_CPP) $(GAME_OBJ_C) $(SONET_TARGET)
 	@echo ' '
 	@echo 'Building executable => $@'
 	@$(DIR_GUARD)

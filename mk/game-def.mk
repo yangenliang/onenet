@@ -6,8 +6,8 @@ GAME_CC			= g++
 GAME_CFLAGS		= $(CFLAGS)
 
 GAME_INC_PATH	= 
-GAME_LIB_PATH	= 
-GAME_LIBS		= 
+GAME_LIB_PATH	= -L$(BIN_DIR) -Wl,-rpath,.
+GAME_LIBS		= -lmodule -lnet 
 
 # --------------------------------------------------------
 

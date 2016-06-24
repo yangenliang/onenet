@@ -8,7 +8,7 @@
 #ifndef _INET_H_
 #define _INET_H_
 
-#include "../imodule.h" 
+#include "../module/imodule.h" 
 
 typedef unsigned int NetId; 
 typedef unsigned int Ip; 
@@ -19,7 +19,7 @@ class INetCallback;
 class INet : public IModule
 {
 public:
-	virtual ~INet() = 0; 
+	virtual ~INet() {}
 
 public:
 	virtual void register_callback(INetCallback* callback) = 0; 
@@ -36,7 +36,7 @@ public:
 class INetCallback
 {
 public:
-	virtual ~INetCallback() = 0; 
+	virtual ~INetCallback() {} 
 
 public:
 	virtual void on_accepted(NetId netid, Ip ip, Port port) = 0; 

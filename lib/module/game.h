@@ -8,9 +8,9 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
-class IModule; 
+#include "imodulemgr.h"
 
-class Game
+class Game : public IModuleMgr
 {
 public:
 	Game(){}
