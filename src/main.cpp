@@ -9,13 +9,17 @@
 #include "../lib/module/game.h"
 #include "../lib/net/netmodule.h"
 
+#include "gamemodule.h"
+
 static const char* NET_MODULE = "NET_MODULE"; 
+static const char* GAME_MODULE = "GAME_MODULE"; 
 
 int main(void)
 {
 	std::cout << "onenet stared" << std::endl; 
 	Game game; 
 	NetModule::Register(&game, NET_MODULE); 
+	game.register_module(GAME_MODULE, new GameModule());
 	// game.register_module(); 
 	return 0; 
 }
