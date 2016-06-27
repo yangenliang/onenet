@@ -8,10 +8,14 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
+#include <list>
+#include <unordered_map>
 #include "imodulemgr.h"
 
 class Game : public IModuleMgr
 {
+	typedef std::unordered_map<std::string, IModule*> ModuleMap; 
+	typedef std::list<IModule*> ModuleList; 
 public:
 	Game(){}
 	~Game(){}
@@ -27,7 +31,12 @@ public:
 public:
 	void run(); 
 	void stop(); 
-	
+
+private:
+	ModuleMap module_map_; 
+	ModuleList inited_list; 
+	ModuleList started_list; 
+
 }; 
 
 #endif // _GAME_H_
