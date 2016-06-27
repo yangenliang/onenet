@@ -17,6 +17,13 @@ public:
 	~Net(); 
 
 public:
+	int init(); 
+	int start(); 
+	int update(); 
+	int stop(); 
+	int release(); 
+
+public:
 	void register_callback(INetCallback* callback); 
 	bool listen(Port port, NetId* netid_out); 
 	bool connect(const char* ip, Port port, 

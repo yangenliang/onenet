@@ -16,3 +16,12 @@ IModule* Game::query_module(const char* name)
 {
 	return nullptr; 
 }
+
+void Game::run()
+{
+	
+}
+
+void Game::stop()
+{
+}

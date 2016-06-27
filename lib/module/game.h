@@ -24,6 +24,10 @@ public:
 	bool register_module(const char* name, IModule* module); 
 	IModule* query_module(const char* name); 
 
+public:
+	void run(); 
+	void stop(); 
+	
 }; 
 
 #endif // _GAME_H_

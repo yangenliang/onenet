@@ -16,6 +16,32 @@ Net::~Net()
 {
 }
 
+int Net::init()
+{
+	return IModule::SUCC; 
+}
+
+int Net::start()
+{
+	return IModule::SUCC; 
+}
+
+int Net::update()
+{
+	return IModule::SUCC; 
+}
+
+int Net::stop()
+{
+	return IModule::SUCC;
+}
+
+int Net::release()
+{
+	return IModule::SUCC;
+}
+
+
 void Net::register_callback(INetCallback* callback)
 {
 	callback_ = callback; 

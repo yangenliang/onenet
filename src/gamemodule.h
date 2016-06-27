@@ -16,6 +16,13 @@ public:
 	GameModule(){}
 	~GameModule(){}
 
+public:
+	int init(); 
+	int start(); 
+	int update(); 
+	int stop(); 
+	int release(); 
+
 }; 
 
 #endif // _GAME_MODULE_H_

@@ -10,7 +10,25 @@
 
 class IModule
 {
-	
+public:
+	IModule() {}
+	virtual ~IModule() {}
+
+public:
+	enum
+	{
+		SUCC,
+		FAIL,
+		PENDING,
+	}; 
+
+public:
+	virtual int init() = 0; 
+	virtual int start() = 0; 
+	virtual int update() = 0; 
+	virtual int stop() = 0; 
+	virtual int release() = 0; 
+
 }; 
 
 #endif // _IMODULE_H_

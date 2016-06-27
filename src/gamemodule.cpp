@@ -6,3 +6,28 @@
 ***************************************************/
 
 #include "gamemodule.h"
+
+int GameModule::init()
+{
+	return IModule::SUCC; 
+}
+
+int GameModule::start()
+{
+	return IModule::SUCC; 
+}
+
+int GameModule::update()
+{
+	return IModule::SUCC; 
+}
+
+int GameModule::stop()
+{
+	return IModule::SUCC; 
+}
+
+int GameModule::release()
+{
+	return IModule::SUCC; 
+}

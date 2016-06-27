@@ -20,6 +20,6 @@ int main(void)
 	Game game; 
 	NetModule::Register(&game, NET_MODULE); 
 	game.register_module(GAME_MODULE, new GameModule());
-	// game.register_module(); 
+	game.run(); 
 	return 0; 
 }
