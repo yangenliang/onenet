@@ -16,6 +16,8 @@ class Game : public IModuleMgr
 {
 	typedef std::unordered_map<std::string, IModule*> ModuleMap; 
 	typedef std::list<IModule*> ModuleList; 
+
+	typedef int (IModule::*IModuleFunc)();
 public:
 	Game(){}
 	~Game(){}
@@ -30,7 +32,8 @@ public:
 
 public:
 	void run(); 
-	void stop(); 
+	void stop();
+	void loop(const ModuleList& module_list, IModuleFunc func, ModuleList* succ_list, bool ignore_exit, int succ_state, int pending_state);  
 
 private:
 	ModuleMap module_map_; 

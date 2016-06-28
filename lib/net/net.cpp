@@ -28,7 +28,7 @@ int Net::start()
 
 int Net::update()
 {
-	return IModule::SUCC; 
+	return IModule::PENDING; 
 }
 
 int Net::stop()
