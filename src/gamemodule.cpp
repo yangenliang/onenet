@@ -19,6 +19,7 @@ int GameModule::start()
 
 int GameModule::update()
 {
+	printf("game module update\n");
 	return IModule::SUCC; 
 }
 

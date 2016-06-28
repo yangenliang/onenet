@@ -10,8 +10,11 @@
 
 class IModule
 {
+	friend class Game; 
 public:
-	IModule() {}
+	IModule()
+	:state_(ST_RELEASED)
+	{}
 	virtual ~IModule() {}
 
 public:
@@ -22,12 +25,30 @@ public:
 		PENDING,
 	}; 
 
+	enum
+	{
+		ST_INITING,
+		ST_INITED,
+		ST_STARTING,
+		ST_STARTED,
+		ST_UPDATING,
+		ST_UPDATED,
+		ST_STOPPING,
+		ST_STOPPED,
+		ST_RELEASING,
+		ST_RELEASED,
+		ST_FAIL,
+	};
+
 public:
 	virtual int init() = 0; 
 	virtual int start() = 0; 
 	virtual int update() = 0; 
 	virtual int stop() = 0; 
 	virtual int release() = 0; 
+
+private:
+	int state_; 
 
 }; 
 

@@ -28,6 +28,7 @@ int Net::start()
 
 int Net::update()
 {
+	printf("net update\n");
 	return IModule::SUCC; 
 }
 

@@ -34,8 +34,9 @@ public:
 
 private:
 	ModuleMap module_map_; 
-	ModuleList inited_list; 
-	ModuleList started_list; 
+	ModuleList module_list_;
+	ModuleList inited_list_; 
+	ModuleList started_list_; 
 
 }; 
 
