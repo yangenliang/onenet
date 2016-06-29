@@ -36,6 +36,7 @@ public:
 	void loop(const ModuleList& module_list, IModuleFunc func, ModuleList* succ_list, bool ignore_exit, int succ_state, int pending_state);  
 
 private:
+	bool stop_; 
 	ModuleMap module_map_; 
 	ModuleList module_list_;
 	ModuleList inited_list_; 

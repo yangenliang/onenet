@@ -15,7 +15,8 @@ bool Game::register_module(const char* name, IModule* module)
 		return false; 
 
 	module_map_[name] = module; 
-	module_list_.emplace_back(module); 
+	module_list_.emplace_back(module);
+	module->module_mgr_ = this;  
 	return true; 
 }
 
@@ -26,12 +27,13 @@ IModule* Game::query_module(const char* name)
 
 void Game::run()
 {
+	stop_ = false; 
 	inited_list_.clear(); 
 	started_list_.clear(); 
 	
-	loop(module_list_, &IModule::init, &inited_list_, true, IModule::ST_INITED, IModule::ST_INITING); 
-	loop(inited_list_, &IModule::start, &started_list_, true, IModule::ST_STARTED, IModule::ST_STARTING); 
-	loop(started_list_, &IModule::update, nullptr, true, IModule::ST_UPDATED, IModule::ST_UPDATING); 
+	loop(module_list_, &IModule::init, &inited_list_, false, IModule::ST_INITED, IModule::ST_INITING); 
+	loop(inited_list_, &IModule::start, &started_list_, false, IModule::ST_STARTED, IModule::ST_STARTING); 
+	loop(started_list_, &IModule::update, nullptr, false, IModule::ST_UPDATED, IModule::ST_UPDATING); 
 
 	std::reverse(started_list_.begin(), started_list_.end()); 
 	loop(started_list_, &IModule::stop, nullptr, true, IModule::ST_STOPPED, IModule::ST_STOPPING); 
@@ -42,12 +44,13 @@ void Game::run()
 
 void Game::stop()
 {
+	stop_ = true; 
 }
 
 void Game::loop(const ModuleList& module_list, IModuleFunc func, ModuleList* succ_list, bool ignore_exit, int succ_state, int pending_state)
 {
 	ModuleList loop_list = module_list; 
-	while(!loop_list.empty() && ignore_exit)
+	while(!loop_list.empty() && (ignore_exit || !stop_))
 	{
 		auto it = loop_list.begin(); 
 		while(it != loop_list.end())

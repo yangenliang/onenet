@@ -5,8 +5,16 @@
 * @data		2016-06-24 16:32:46.
 ***************************************************/
 
-#include "../lib/net/inet.h"
 #include "gamemodule.h"
+#include "servercommon.h"
+
+#include "../lib/net/inet.h"
+// #include "../lib/module/imodule.h"
+
+// #include "../lib/module/game.h"
+#include "../lib/module/imodulemgr.h"
+
+
 
 class NetCallback : public INetCallback
 {
@@ -50,6 +58,8 @@ int GameModule::init()
 
 int GameModule::start()
 {
+	net_ = dynamic_cast<INet*>(module_mgr()->query_module(NET_MODULE)); 
+	net_->register_callback(net_callback_); 
 	return IModule::SUCC; 
 }
 

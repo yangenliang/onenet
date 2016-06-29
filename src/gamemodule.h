@@ -10,6 +10,7 @@
 
 #include "../lib/module/imodule.h" 
 
+class INet; 
 class INetCallback; 
 
 class GameModule : public IModule
@@ -26,7 +27,8 @@ public:
 	int release(); 
 
 private:
-	INetCallback* net_callback_; 
+	INet*			net_;
+	INetCallback*	net_callback_; 
 }; 
 
 #endif // _GAME_MODULE_H_

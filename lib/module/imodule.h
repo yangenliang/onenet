@@ -8,12 +8,14 @@
 #ifndef _IMODULE_H_
 #define _IMODULE_H_
 
+class IModuleMgr; 
+
 class IModule
 {
 	friend class Game; 
 public:
 	IModule()
-	:state_(ST_RELEASED)
+	:state_(ST_RELEASED), module_mgr_(0)
 	{}
 	virtual ~IModule() {}
 
@@ -47,8 +49,10 @@ public:
 	virtual int stop() = 0; 
 	virtual int release() = 0; 
 
+	IModuleMgr* module_mgr(){ return module_mgr_; }
 private:
-	int state_; 
+	int			state_; 
+	IModuleMgr* module_mgr_; 
 
 }; 
 

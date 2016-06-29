@@ -5,14 +5,7 @@
 * @data		2016-06-21 13:49:32.
 ***************************************************/
 
-#include <iostream>
-#include "../lib/module/game.h"
-#include "../lib/net/netmodule.h"
-
-#include "gamemodule.h"
-
-static const char* NET_MODULE = "NET_MODULE"; 
-static const char* GAME_MODULE = "GAME_MODULE"; 
+#include "stdafx.h"
 
 int main(void)
 {
