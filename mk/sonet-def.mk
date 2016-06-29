@@ -7,7 +7,7 @@ SONET_CFLAGS	= $(CFLAGS)
 
 SONET_INC_PATH	= 
 SONET_LIB_PATH	= 
-SONET_LIBS		= 
+SONET_LIBS		= -lpthread
 
 # --------------------------------------------------------
 

@@ -9,12 +9,7 @@
 #include "servercommon.h"
 
 #include "../lib/net/inet.h"
-// #include "../lib/module/imodule.h"
-
-// #include "../lib/module/game.h"
 #include "../lib/module/imodulemgr.h"
-
-
 
 class NetCallback : public INetCallback
 {
