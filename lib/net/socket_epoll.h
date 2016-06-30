@@ -9,5 +9,6 @@
 #define _SOCKET_EPOLL_H_
 
 static int setnonbloking(int fd); 
+// static int epoll_create(); 
 
 #endif // _SOCKET_EPOLL_H_
