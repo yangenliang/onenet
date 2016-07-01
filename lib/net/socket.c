@@ -24,7 +24,8 @@
 #define MAXLINE      1024
 #define MAXEPOLLSIZE 1024
 
-int handle(int connfd); 
+static int 
+handle(int connfd); 
 
 static int 
 setnonbloking(int fd)
@@ -103,7 +104,6 @@ start_epoll(int ep_fd, int listen_fd)
 
 	sockaddr_in client_addr; 
 	socklen_t socklen = sizeof(struct sockaddr_in); 
-
 	while(1)
 	{
 		nfds = epoll_wait(ep_fd, events, curfds, -1); 
@@ -111,7 +111,6 @@ start_epoll(int ep_fd, int listen_fd)
 			perror("epoll_wait"); 
 			continue; 
 		}
-
 		for (int n = 0; n < nfds; ++n) {
 			if (events[n].data.fd == listen_fd) {
 				conn_fd = accept(listen_fd, (struct sockaddr*)&client_addr, &socklen); 
@@ -147,9 +146,10 @@ start_epoll(int ep_fd, int listen_fd)
 			}
 		}
 	}
+	return 0; 
 }
 
-int 
+static int 
 handle(int connfd)
 {
 	int nread; 
@@ -166,15 +166,21 @@ handle(int connfd)
 		close(connfd); 
 		return -1; 
 	}
-	write(connfd, buf, nread); 
+	int nwrite = write(connfd, buf, nread); 
+	if (nwrite < 0) {
+		perror("write error"); 
+		close(connfd); 
+		return -1; 
+	}
 	return 0; 
 }
 
 
-static int 
+int 
 start_net()
 {
-	int listen_fd = init_socket(6666); 
+	int listen_fd = init_socket(10010); 
 	int ep_fd = init_epoll(listen_fd); 
 	start_epoll(ep_fd, listen_fd); 
+	return 0; 
 }
