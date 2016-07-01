@@ -6,11 +6,7 @@
 ***************************************************/
 
 #include "net.h"
-extern "C"
-{
 #include "socket.h"
-}
-
 #include <thread>
 
 Net::Net()
