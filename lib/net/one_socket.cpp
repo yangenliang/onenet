@@ -1,11 +1,11 @@
 /***************************************************
-* @filename	socket.c
+* @filename	one_socket.cpp
 * @auther	yangenliang
 * @email	2499899214@qq.com
 * @data		2016-07-01 23:22:44.
 ***************************************************/
 
-#include "socket.h"
+#include "one_socket.h"
 
 namespace onenet
 {
