@@ -13,12 +13,16 @@ class EpollServer
 	enum name
 	{
 		MAX_EPOLL_SIZE	= 1024,
+		EPOLL_TIMEOUT 	= 50, 
 	};
 public:
 	EpollServer(); 
 	~EpollServer(); 
 
+	void stop(); 
+
 public:
+	int run_loop(const char* addr, unsigned int port); 
 	int start_server(const char* addr, unsigned int port); 
 
 private:
@@ -26,6 +30,7 @@ private:
 	unsigned int port_; 
 
 	int ep_fd_; 
+	bool stop_; 
 
 }; 
 

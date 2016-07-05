@@ -10,11 +10,17 @@
 #include <sys/epoll.h>
 
 EpollServer::EpollServer()
+:stop_(false)
 {
 }
 
 EpollServer::~EpollServer()
 {
+}
+
+void EpollServer::stop()
+{
+	stop_ = true; 
 }
 
 int EpollServer::start_server(const char* addr, unsigned int port)
@@ -63,5 +69,47 @@ int EpollServer::start_server(const char* addr, unsigned int port)
     }
 
     printf("start_server:%s:%d, success.\n", addr, port);
+    return 0; 
+}
+
+int EpollServer::run_loop(const char* addr, unsigned int port)
+{
+	int ret = start_server(addr, port); 
+	if (ret)
+	{
+		return ret; 
+	}
+
+	struct epoll_event ev;
+    struct epoll_event events[MAX_EPOLL_SIZE];
+
+    int event_count = 1; 
+    while(!stop_)
+    {
+    	int nfds = epoll_wait(ep_fd_, events, event_count, EPOLL_TIMEOUT); 
+    	if (-1 == nfds)
+    	{
+    		if (errno == EINTR)
+    		{
+    			continue; 
+    		}
+    		else
+    		{    			
+    			printf("epoll_wait error\n");
+    			break; 
+    		}
+    	}
+    	else if (0 == nfds)
+    	{
+    		printf("epoll_wait time out.\n");
+    	}
+
+    	for (int n = 0; n < nfds; ++n)
+    	{
+    		int fd = events[n].data.fd; 
+    		// todo
+    	}
+
+    }
     return 0; 
 }
